@@ -23,8 +23,8 @@ class Play extends Phaser.Scene {
 
     create (){
         // place background
-        this.belt = this.add.tileSprite(0, 0, game.config.width, game.config.height, "belt").setOrigin(0,0);
-        this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, "background").setOrigin(0, 0);
+        this.belt = this.add.tileSprite(0, 0, game.config.width, game.config.height, "belt").setOrigin(0,0);                    // place belt
+        this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, "background").setOrigin(0, 0);       // place background
         
 
          // green UI background
@@ -103,19 +103,19 @@ class Play extends Phaser.Scene {
         this.sushi03.update();
 
         //check collisions
-        if(this.checkCollision(this.p1Chopsticks, this.sushi01)) {
+        if(this.checkCollision(this.p1Chopsticks, this.sushi03)) {
             this.p1Chopsticks.reset();
-            this.eatSushi(this.sushi01);
+            this.eatSushi(this.sushi03);
 
         }
         if(this.checkCollision(this.p1Chopsticks, this.sushi02)) {
             this.p1Chopsticks.reset();
-            this.eatSushi(this.sushi03);
+            this.eatSushi(this.sushi02);
         }
 
-        if(this.checkCollision(this.p1Chopsticks, this.sushi03)) {
+        if(this.checkCollision(this.p1Chopsticks, this.sushi01)) {
             this.p1Chopsticks.reset();
-            this.eatSushi(this.sushi03);
+            this.eatSushi(this.sushi01);
         }
 
         if(!this.gameOver) {

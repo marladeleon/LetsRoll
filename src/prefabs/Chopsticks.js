@@ -1,4 +1,4 @@
-class Chopsticks extends Phaser.GameObjects.Sprite{
+class Chopsticks extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
 
@@ -10,7 +10,7 @@ class Chopsticks extends Phaser.GameObjects.Sprite{
         this.sfxChopsticks = scene.sound.add("sfx_move");       // add chopsticks movement sfx
     }
 
-    update() {
+    update(){
         // left/right movement
         if(!this.isFiring) {
             if(keyLEFT.isDown && this.x >= borderUISize + this.width) {
@@ -19,20 +19,17 @@ class Chopsticks extends Phaser.GameObjects.Sprite{
                 this.x += this.moveSpeed;
             }
         }
-
         // fire button
         if(Phaser.Input.Keyboard.JustDown(keyF) && !this.isFiring) {
             this.isFiring = true;
-            this.sfxChopsticks.play();      // play move sfx
+            this.sfxRocket.play();      // play sfx
         }
-
-        // if fired, move the chopsticks up
-        if(this.isFiring && this.y >= borderUISize *3 + borderPadding) {
+        // if fired, move the rocket up
+        if(this.isFiring && this.y >= borderUISize * 3 + borderPadding) {
             this.y -= this.moveSpeed;
         }
-
-        // reset on miss 
-        if(this.y <= borderUISize * 3 + borderPadding) {
+        // reset on miss
+        if(this.y <= borderUISize * 3 +borderPadding) {
             this.reset();
         }
     }
