@@ -1,4 +1,6 @@
 // game configuration
+"use strict";
+
 let config = {
     type: Phaser.CANVAS,
     width: 640,
