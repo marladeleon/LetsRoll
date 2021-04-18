@@ -22,7 +22,7 @@ class Chopsticks extends Phaser.GameObjects.Sprite {
         // fire button
         if(Phaser.Input.Keyboard.JustDown(keyF) && !this.isFiring) {
             this.isFiring = true;
-            this.sfxRocket.play();      // play sfx
+            this.sfxChopsticks.play();      // play sfx
         }
         // if fired, move the rocket up
         if(this.isFiring && this.y >= borderUISize * 3 + borderPadding) {

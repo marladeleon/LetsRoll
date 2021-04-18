@@ -10,6 +10,9 @@ class Menu extends Phaser.Scene {
         this.load.audio("bgm", "./assets/bgm.wav");                 // load bgm 
         this.load.audio("sfx_crowd", "./assets/crowd.wav");         // ambience sfx
         this.load.audio("sfx_munch", "./assets/sfx_munch.wav");     // collision sfx 
+        this.load.image("sushi01", "./assets/sushi_01.png");
+        this.load.image("sushi02", "./assets/sushi_02.png");
+        this.load.image("sushi03", "./assets/sushi_03.png");
     }
 
     create() {
@@ -37,6 +40,14 @@ class Menu extends Phaser.Scene {
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
+        game.music = this.sound.add("bgm", {volume: 0.5});
+        game.music.setLoop(true);
+
+        game.ambience = this.sound.add("sfx_crowd");
+        game.ambience.setLoop(true);
+        
+
     }
 
     update() {
