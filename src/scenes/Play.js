@@ -12,13 +12,6 @@ class Play extends Phaser.Scene {
         this.load.image("background","./assets/background.png");    //background
         this.load.image("belt", "./assets/belt.png");               //moving conveyor belt 
         
-        this.load.spritesheet("explosion", "./assets/explosion.png", {
-            frameWidth: 64,
-            frameHeight: 32,
-            startFrame: 0,
-            endFrame: 9
-        });
-        
     }
 
     create (){
@@ -26,31 +19,41 @@ class Play extends Phaser.Scene {
         this.belt = this.add.tileSprite(0, 0, game.config.width, game.config.height, "belt").setOrigin(0,0);                // place belt
         this.background = this.add.tileSprite(0,0, game.config.width, game.config.height, "background").setOrigin(0,0);     // place resturant background
         
-        // green UI background 
-        this.add.rectangle(30, 85, 90, 64, 0xFFFFFF).setOrigin(0,0);
-
-        
         // add p1 brown chopsticks
         this.p1Chopsticks = new Chopsticks(this, game.config.width/2, game.config.height - borderUISize - borderPadding, "chopsticks").setOrigin(0.5,0);
 
         // add sushi rolls on conveyor belt later
-        this.sushi01 = new SushiRoll(this, game.config.width + borderUISize*6, borderUISize*4, "sushi01", 0, 30).setOrigin(0,0);
-        this.sushi02 = new SushiRoll(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, "sushi02", 0, 20).setOrigin(0,0);
-        this.sushi03 = new SushiRoll(this, game.config.width, borderUISize*6 + borderPadding*4, "sushi03", 0, 10).setOrigin(0,0);
-        
-        console.log(this);
+        this.sushi01 = new SushiRoll(this, game.config.width + borderUISize*6, 210, "sushi01", 0, 30).setOrigin(0,0);
+        this.sushi02 = new SushiRoll(this, game.config.width + borderUISize*3, 250, "sushi02", 0, 20).setOrigin(0,0);
+        this.sushi03 = new SushiRoll(this, game.config.width, 320 , "sushi03", 0, 10).setOrigin(0,0);
 
         // define keys 
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        
+        // display fire UI 
+        let fireUI = {
+            fontFamily: "Monaco",
+            fontSize: "14px",
+            backgroundColor: "#FFC0CB",
+            Ccolor: "#843605",
+            align: "right",
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        this.add.text(570, 130, "GRAB THOSE ROLLS", fireUI).setOrigin(0.5);
 
         // initialize score
         this.p1score = 0;
         //display score 
         let scoreConfig = {
-            fontFamily: "Courier",
+            fontFamily: "Monaco",
             fontSize: "28px",
             backgroundColor: "#F3B141",
             color: "#843605",
@@ -61,7 +64,7 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 100
         }
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1score, scoreConfig);
+        this.scoreLeft = this.add.text(270, 100, this.p1score, scoreConfig);
 
        // GAME OVER flag
         this.gameOver = false;
@@ -74,8 +77,11 @@ class Play extends Phaser.Scene {
         this.gameOver = true;
         }, null, this);
 
-        game.music.play();
-        game.ambience.play();
+
+        game.music.play();              // Play BGM 
+        game.ambience.play();           // Play crowd SFX
+
+
     }
 
     update() {

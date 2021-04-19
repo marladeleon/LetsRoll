@@ -7,7 +7,7 @@ class SushiRoll extends Phaser.GameObjects.Sprite {
     }
 
     update() {
-        // move chopsticks left
+        // move sushi rolls to the left
         this.x -= this.moveSpeed;
 
         //wrap around from left to right edge

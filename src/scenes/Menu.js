@@ -13,14 +13,18 @@ class Menu extends Phaser.Scene {
         this.load.image("sushi01", "./assets/sushi_01.png");
         this.load.image("sushi02", "./assets/sushi_02.png");
         this.load.image("sushi03", "./assets/sushi_03.png");
+        this.load.image("menu", "./assets/menu_BG.png");
     }
 
     create() {
+        // load menu bg
+        this.menuBG = this.add.tileSprite(0,0, game.config.width, game.config.height, "menu").setOrigin(0,0);
+
         // menu text configuration
         let menuConfig = {
-            fontFamily: "Courier",
+            fontFamily: "Monaco",
             fontSize: "28px",
-            backgroundColor: "#F3B141",
+            backgroundColor: "#FFC0CB",
             Ccolor: "#843605",
             align: "right",
             padding: {
@@ -30,10 +34,11 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
+
         // show menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, "LET'S ROLL", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, "Use ←→ arrows to move & (F) to fire", menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = "#00ff00";
+        menuConfig.backgroundColor = "#789d2e";
         menuConfig.color = "#000";
         this.add.text(game.config.width/2,game.config.height/2 + borderUISize + borderPadding, "Press ← for Novice or → for Expert", menuConfig).setOrigin(0.5);    
     
@@ -68,7 +73,7 @@ class Menu extends Phaser.Scene {
                 sushiSpeed: 4,
                 gameTimer: 45000
             }
-
+            
             this.sound.play('sfx_select');
             this.scene.start('playScene');
         }
