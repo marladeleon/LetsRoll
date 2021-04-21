@@ -61,7 +61,7 @@ class Menu extends Phaser.Scene {
             // EASY MODE
             game.settings = {
                 sushiSpeed: 3,
-                gameTimer: 2000
+                gameTimer: 60000
             }
 
             this.sound.play('sfx_select');
@@ -71,7 +71,7 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // HARD MODE
             game.settings = {
-                sushiSpeed: 4,
+                sushiSpeed: 4.5,
                 gameTimer: 45000
             }
             
