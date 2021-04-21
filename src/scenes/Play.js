@@ -51,7 +51,7 @@ class Play extends Phaser.Scene {
 
         // initialize score
         this.p1score = 0;
-        //display score 
+        // display score 
         let scoreConfig = {
             fontFamily: "Monaco",
             fontSize: "28px",
@@ -66,12 +66,22 @@ class Play extends Phaser.Scene {
         }
         this.scoreLeft = this.add.text(270, 100, this.p1score, scoreConfig);
 
+        // countdown timer 
+        game.settings.currentTime = game.settings.gameTimer;
+        game.settings.timeLeft = this.add.text(320, 54, game.settings.currentTime, scoreConfig);
+
+        this.timer = this.time.addEvent({
+            delay: 100,                         // per second                
+            callback: this.countDownTimer,
+            loop: true
+        });
+        
        // GAME OVER flag
         this.gameOver = false;
         
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(60000, () => {
+        this.clock = this.time.delayedCall(2000, () => {
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
         this.gameOver = true;
@@ -85,6 +95,11 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        // when timer hits 0 stop timer 
+        if(game.settings.currentTime == 0){
+            this.gameOver = true;
+        }
+        
         // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
@@ -147,5 +162,10 @@ class Play extends Phaser.Scene {
         sushi.reset();
 
         this.sound.play("sfx_munch");       // bite sfx it's quiet 
+    }
+
+    countDownTimer() {
+        game.settings.currentTime -= 100;
+        game.settings.timeLeft.text = game.settings.currentTime;
     }
 }
