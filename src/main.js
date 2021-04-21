@@ -15,7 +15,8 @@ Points Explanation:
 
 Credits: 
 Background Music done by boyfriend Zachary Westman 
-SFX munch/select by GFXSounds.com
+SFX select by GFXSounds.com
+SFX munch by X Sound Effect https://www.youtube.com/watch?v=bjcC3B0GGog
 SFX crowd talking by snakebarney
 
 Gotten help from groupmates Finn Morrison, Emersen Lorenz, Aubrey Anne Schelbauer, 

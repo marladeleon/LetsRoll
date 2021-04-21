@@ -161,7 +161,7 @@ class Play extends Phaser.Scene {
         this.scoreLeft.text = this.p1score;
         sushi.reset();
 
-        this.sound.play("sfx_munch", {volume: 5});       // bite sfx it's quiet 
+        this.sound.play("sfx_munch", {volume: 0.5});       // bite sfx it's quiet 
     }
 
     countDownTimer() {
