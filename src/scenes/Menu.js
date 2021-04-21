@@ -15,6 +15,7 @@ class Menu extends Phaser.Scene {
         this.load.image("sushi03", "./assets/sushi_03.png");
         this.load.image("menu", "./assets/menu_BG.png");
         this.load.image("belt", "./assets/belt.png");
+        this.load.image("background","./assets/background.png");
     }
 
     create() {
