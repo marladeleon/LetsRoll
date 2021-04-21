@@ -97,7 +97,7 @@ class Play extends Phaser.Scene {
     update() {
         // when timer hits 0 stop timer 
         if(game.settings.currentTime == 0){
-            this.gameOver = true;
+            this.stopGame();
         }
         
         // check key input for restart
@@ -167,5 +167,15 @@ class Play extends Phaser.Scene {
     countDownTimer() {
         game.settings.currentTime -= 100;
         game.settings.timeLeft.text = game.settings.currentTime;
+    }
+    
+    stopGame() {
+        // stops music/ambience/timer                    
+        this.gameOver = true;
+        this.timer.paused = true;
+        game.music.pause();
+        game.ambience.pause();
+        game.settings.timeLeft.text = 0
+        
     }
 }
